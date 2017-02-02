@@ -90,6 +90,7 @@ public class Frame extends JFrame implements ActionListener
         start.addActionListener(this);
         start.setActionCommand("start");
         add(start);
+      
         
 }
     
@@ -255,7 +256,7 @@ public class Frame extends JFrame implements ActionListener
         RPGcontroller spieleManager = new RPGcontroller(spieler1Klasse,spieler2Klasse,spieler1KlasseSec,spieler1KlasseThird,spieler2KlasseSec,spieler2KlasseThird);
         GameFrame frame = new GameFrame("Spiel",spieleManager);
         JFrame.setDefaultLookAndFeelDecorated(true);
-        frame.setSize(800,750);
+        frame.setSize(800,950);
         frame.setVisible( true );
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.dispose();
@@ -275,6 +276,7 @@ public class Frame extends JFrame implements ActionListener
 
 class   GameFrame extends JFrame implements ActionListener
 {
+	JTextArea FightingLog;
     RPGcontroller spieleManager;
     Spieler spieler1;
     Spieler spieler2;
@@ -391,7 +393,12 @@ class   GameFrame extends JFrame implements ActionListener
        add(thingsHappend);
        
        
-       
+        FightingLog = new JTextArea ( 800, 200 );
+       FightingLog .setEditable ( false );
+       JScrollPane scroll = new JScrollPane ( FightingLog  );
+       scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
+       scroll .setBounds(2,700,800,200);
+       add(scroll);
        
        
        spieler1Stats = new JButton("Spieler1 Stats");
@@ -431,6 +438,11 @@ class   GameFrame extends JFrame implements ActionListener
     	 ichSelbst.spieler1Wechsel.setVisible(!false);
     	 ichSelbst.spieler1Wechsel2.setVisible(!false);}
      	
+     }
+     public static void PrintOut(String chatLog)
+     {
+    	 ichSelbst.FightingLog.setText(ichSelbst.FightingLog.getText()+chatLog+"\n");
+    	 
      }
      public static void Hide2(boolean hide)
      {

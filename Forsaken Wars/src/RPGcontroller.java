@@ -262,9 +262,11 @@ public class RPGcontroller
     public void Kampf()//Das Kampfsystem funktioniert seltsame^^.Der Spieler soll so oft Schaden zufuegen wie die Differenz zwischen beiden Spielern.Der langsamere jedoch nur 1 mal ^^.Man kriegt Schaden geteilt durch die Ruestungen/2.
     {
         if(spieler1.getKampfbereit())
-        System.out.println(spieler1.getName()+" hat seine Bereitheit deklariert.");
+        	GameFrame.PrintOut(spieler1.getName()+" hat seine Bereitheit deklariert. Seine Geschwindigkeit beträgt "+spieler1.getSchnelligkeit());
         if(spieler2.getKampfbereit())
-        System.out.println(spieler2.getName()+" hat seine Bereitheit deklariert.");
+        	GameFrame.PrintOut(spieler2.getName()+" hat seine Bereitheit deklariert. Seine Geschwindigkeit beträgt "+spieler2.getSchnelligkeit());
+       
+       
         if(spieler1.getKampfbereit()&&spieler2.getKampfbereit())
         {
     
@@ -272,14 +274,13 @@ public class RPGcontroller
         	
      if(spieler1.getSchnelligkeit()>spieler2.getSchnelligkeit())
     {
-    for(int i = 1;i<spieler1.getSchnelligkeit()-spieler2.getSchnelligkeit();i++)
-    {   
-        if(spieler1.getSchaden()-spieler2.getRuestung()/2>0)
-        spieler2.setLeben(spieler1.getSchaden()-spieler2.getRuestung()/2);   System.out.println("Spieler 1 schlaegt.");
-    }
+    
+       if(spieler1.getSchaden()-spieler2.getRuestung()/2>0)
+       spieler2.setLeben(spieler1.getSchaden()-spieler2.getRuestung()/2);   GameFrame.PrintOut(spieler1.getShortName()+" nutzt den Angriff und fügt "+ spieler2.getShortName()+" "+(spieler1.getSchaden()-spieler2.getRuestung()/2)+" zu.");
+    
     
     if(spieler2.getSchaden()-spieler1.getRuestung()/2>0&&spieler1.getLeben()>0)
-    spieler1.setLeben(spieler2.getSchaden()-spieler1.getRuestung()/2); System.out.println("Spieler 2 schlaegt.");
+    spieler1.setLeben(spieler2.getSchaden()-spieler1.getRuestung()/2); GameFrame.PrintOut(spieler2.getShortName()+" nutzt den Angriff und fügt "+ spieler1.getShortName()+" "+(spieler2.getSchaden()-spieler1.getRuestung()/2)+" zu.");
     }
     
     
@@ -289,13 +290,11 @@ public class RPGcontroller
     
     if(spieler2.getSchnelligkeit()>spieler1.getSchnelligkeit())
     {
-    for(int i = 0;i<spieler2.getSchnelligkeit()-spieler1.getSchnelligkeit();i++)
-    {
-        if(spieler2.getSchaden()-spieler1.getRuestung()/2>0)
-        spieler1.setLeben(spieler2.getSchaden()-spieler1.getRuestung()/2);   System.out.println("Spieler 2 schlaegt.");
-    }
+       if(spieler2.getSchaden()-spieler1.getRuestung()/2>0)
+       spieler1.setLeben(spieler2.getSchaden()-spieler1.getRuestung()/2);   GameFrame.PrintOut(spieler2.getShortName()+" nutzt den Angriff und fügt "+ spieler1.getShortName()+" "+(spieler2.getSchaden()-spieler1.getRuestung()/2)+" zu.");
+  
     if(spieler1.getSchaden()-spieler2.getRuestung()/2>0&& spieler2.getLeben()>0)
-    spieler2.setLeben(spieler1.getSchaden()-spieler2.getRuestung()/2); System.out.println("Spieler 1 schlaegt.");
+    spieler2.setLeben(spieler1.getSchaden()-spieler2.getRuestung()/2); GameFrame.PrintOut(spieler1.getShortName()+" nutzt den Angriff und fügt "+ spieler2.getShortName()+" "+(spieler1.getSchaden()-spieler2.getRuestung()/2)+" zu.");
     }
     
     
@@ -307,10 +306,10 @@ public class RPGcontroller
      {
          if(spieler2.getSchaden()-spieler1.getRuestung()/2>0)
         spieler2.setLeben(spieler1.getSchaden()-(spieler2.getRuestung()/2));
-         System.out.println("Spieler 1 schlaegt.");
+        GameFrame.PrintOut(spieler1.getShortName()+" nutzt den Angriff und fügt "+ spieler2.getShortName()+" "+(spieler1.getSchaden()-spieler2.getRuestung()/2)+" zu.");
          if(spieler1.getSchaden()-spieler2.getRuestung()/2>0)
         spieler1.setLeben(spieler2.getSchaden()-(spieler1.getRuestung()/2));
-         System.out.println("Spieler 2 schlaegt.");
+         GameFrame.PrintOut(spieler2.getShortName()+" nutzt den Angriff und fügt "+ spieler1.getShortName()+" "+(spieler2.getSchaden()-spieler1.getRuestung()/2)+" zu.");
      }
     
     
